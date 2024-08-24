@@ -3,14 +3,20 @@ spring:
     name: "EmailNotificationService"
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      group-id: product-created-events
+      bootstrap-servers: "localhost:9092"
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: "product-created-events"
       properties:
         spring:
           json:
             trusted:
-              packages: *
+              packages: "com.appsdeveloperblog.ws.core"
 server:
   port: 0
+
+
+event:
+  product:
+    topic-create:
+      name: "product-created-events-topics"
